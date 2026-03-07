@@ -10,9 +10,17 @@ const cartItemsElement = document.getElementById("cart-items");
 const totalPriceElement = document.getElementById("total-price");
 const orderBtn = document.getElementById("order-btn");
 
-const modal = document.getElementById("order-modal");
+const orderModal = document.getElementById("order-modal");
+const confirmModal = document.getElementById("confirm-modal");
+const successModal = document.getElementById("success-modal");
+
 const closeModalBtn = document.getElementById("close-modal");
-const confirmOrderBtn = document.getElementById("confirm-order");
+const continueOrderBtn = document.getElementById("continue-order");
+const finalConfirmOrderBtn = document.getElementById("final-confirm-order");
+const backToFormBtn = document.getElementById("back-to-form");
+const closeSuccessBtn = document.getElementById("close-success");
+
+const confirmSummary = document.getElementById("confirm-summary");
 
 const nameInput = document.getElementById("name");
 const surnameInput = document.getElementById("surname");
@@ -68,20 +76,54 @@ function removeFromCart(index) {
     renderCart();
 }
 
+function clearCart() {
+    cart = [];
+    renderCart();
+}
+
+function clearForm() {
+    nameInput.value = "";
+    surnameInput.value = "";
+    emailInput.value = "";
+    addressInput.value = "";
+}
+
+function buildSummary(name, surname, email, address) {
+    const itemsHtml = cart
+        .map(item => `<p>• ${item.name} — ${item.price}$</p>`)
+        .join("");
+
+    const total = cart.reduce((sum, item) => sum + item.price, 0);
+
+    confirmSummary.innerHTML = `
+        <p><strong>Имя:</strong> ${name}</p>
+        <p><strong>Фамилия:</strong> ${surname}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Адрес:</strong> ${address}</p>
+
+        <div class="summary-items">
+            <p><strong>Товары:</strong></p>
+            ${itemsHtml}
+        </div>
+
+        <p class="summary-total">Итого: ${total}$</p>
+    `;
+}
+
 orderBtn.addEventListener("click", () => {
     if (cart.length === 0) {
         tg.showAlert("Корзина пуста");
         return;
     }
 
-    modal.classList.remove("hidden");
+    orderModal.classList.remove("hidden");
 });
 
 closeModalBtn.addEventListener("click", () => {
-    modal.classList.add("hidden");
+    orderModal.classList.add("hidden");
 });
 
-confirmOrderBtn.addEventListener("click", () => {
+continueOrderBtn.addEventListener("click", () => {
     const name = nameInput.value.trim();
     const surname = surnameInput.value.trim();
     const email = emailInput.value.trim();
@@ -92,24 +134,45 @@ confirmOrderBtn.addEventListener("click", () => {
         return;
     }
 
+    buildSummary(name, surname, email, address);
+
+    orderModal.classList.add("hidden");
+    confirmModal.classList.remove("hidden");
+});
+
+backToFormBtn.addEventListener("click", () => {
+    confirmModal.classList.add("hidden");
+    orderModal.classList.remove("hidden");
+});
+
+finalConfirmOrderBtn.addEventListener("click", () => {
+    const name = nameInput.value.trim();
+    const surname = surnameInput.value.trim();
+    const email = emailInput.value.trim();
+    const address = addressInput.value.trim();
+
     const orderData = {
         action: "create_order",
         user_id: user ? user.id : null,
         username: user ? user.username : null,
-        name: name,
-        surname: surname,
-        email: email,
-        address: address,
+        name,
+        surname,
+        email,
+        address,
         items: cart,
         total: cart.reduce((sum, item) => sum + item.price, 0)
     };
 
     tg.sendData(JSON.stringify(orderData));
 
-    modal.classList.add("hidden");
+    confirmModal.classList.add("hidden");
+    successModal.classList.remove("hidden");
 
-    nameInput.value = "";
-    surnameInput.value = "";
-    emailInput.value = "";
-    addressInput.value = "";
+    clearCart();
+    clearForm();
+});
+
+closeSuccessBtn.addEventListener("click", () => {
+    successModal.classList.add("hidden");
+    tg.close();
 });

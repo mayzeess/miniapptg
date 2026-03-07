@@ -252,3 +252,28 @@ body {
         width: 100%;
     }
 }
+
+.confirm-summary {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 12px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.confirm-summary p {
+    margin: 6px 0;
+}
+
+.confirm-summary .summary-items {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.confirm-summary .summary-total {
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 16px;
+}

@@ -26,7 +26,6 @@
             <h2>Каталог</h2>
 
             <div class="products-grid">
-
                 <div class="product-card">
                     <img src="images/hoodie.jpg" alt="Black Hoodie">
                     <h3>Black Hoodie</h3>
@@ -58,7 +57,6 @@
                     <p class="price">95$</p>
                     <button onclick="addToCart('Oversize Jacket', 95)">Добавить</button>
                 </div>
-
             </div>
         </section>
 
@@ -76,7 +74,6 @@
 
     </div>
 
-    <!-- Модальное окно -->
     <div id="order-modal" class="modal hidden">
         <div class="modal-content">
             <h2>Оформление заказа</h2>
@@ -86,12 +83,30 @@
             <input id="email" type="email" placeholder="Email">
             <input id="address" type="text" placeholder="Адрес доставки">
 
-            <button id="confirm-order" class="confirm-btn">Подтвердить заказ</button>
+            <button id="continue-order" class="confirm-btn">Продолжить</button>
             <button id="close-modal" class="close-btn">Закрыть</button>
         </div>
     </div>
 
-    <!-- JS всегда лучше подключать в самом конце -->
+    <div id="confirm-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Проверьте заказ</h2>
+
+            <div id="confirm-summary" class="confirm-summary"></div>
+
+            <button id="final-confirm-order" class="confirm-btn">Подтвердить окончательно</button>
+            <button id="back-to-form" class="close-btn">Назад</button>
+        </div>
+    </div>
+
+    <div id="success-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>✅ Заказ оформлен</h2>
+            <p>Спасибо! Ваш заказ успешно отправлен.</p>
+            <button id="close-success" class="confirm-btn">ОК</button>
+        </div>
+    </div>
+
     <script src="app.js"></script>
 </body>
 </html>
