@@ -60,7 +60,7 @@ function renderCart() {
         cartItem.innerHTML = `
             <div>
                 <div class="cart-item-name">${item.name}</div>
-                <div class="cart-item-price">${item.price}$</div>
+                <div class="cart-item-price">${item.price}руб</div>
             </div>
             <button class="remove-btn" onclick="removeFromCart(${index})">Удалить</button>
         `;
@@ -106,7 +106,7 @@ function buildSummary(name, surname, email, address) {
             ${itemsHtml}
         </div>
 
-        <p class="summary-total">Итого: ${total}$</p>
+        <p class="summary-total">Итого: ${total}руб</p>
     `;
 }
 
@@ -176,3 +176,32 @@ closeSuccessBtn.addEventListener("click", () => {
     successModal.classList.add("hidden");
     tg.close();
 });
+
+async function loadProducts() {
+
+    const response = await fetch("http://127.0.0.1:8000/goods");
+    const goods = await response.json();
+
+    const grid = document.querySelector(".products-grid");
+    grid.innerHTML = "";
+
+    goods.forEach(product => {
+
+        const card = document.createElement("div");
+        card.className = "product-card";
+
+        card.innerHTML = `
+            <img src="${product.image}">
+            <h3>${product.name}</h3>
+            <p class="description">${product.description}</p>
+            <p class="price">${product.price} руб</p>
+            <button onclick="addToCart('${product.name}', ${product.price})">
+                Добавить
+            </button>
+        `;
+
+        grid.appendChild(card);
+    });
+}
+
+loadProducts()
