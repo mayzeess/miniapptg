@@ -5,7 +5,6 @@ tg.expand();
 
 let cart = [];
 
-const userNameElement = document.getElementById("user-name");
 const cartItemsElement = document.getElementById("cart-items");
 const totalPriceElement = document.getElementById("total-price");
 const orderBtn = document.getElementById("order-btn");
@@ -28,12 +27,6 @@ const emailInput = document.getElementById("email");
 const addressInput = document.getElementById("address");
 
 const user = tg.initDataUnsafe?.user;
-
-if (user) {
-    userNameElement.textContent = `Привет, ${user.first_name}${user.last_name ? " " + user.last_name : ""}!`;
-} else {
-    userNameElement.textContent = "Привет! Пользователь Telegram не определён.";
-}
 
 function addToCart(name, price) {
     cart.push({ name, price });

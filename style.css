@@ -5,8 +5,8 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #f3f4f6;
-    color: #1f2937;
+    background: #111111;
+    color: #ffffff;
 }
 
 .app {
@@ -20,6 +20,12 @@ body {
     padding: 20px 10px;
 }
 
+.welcome-card {
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
 .logo {
     margin: 0;
     font-size: 30px;
@@ -27,13 +33,13 @@ body {
 
 .subtitle {
     margin-top: 8px;
-    color: #6b7280;
+    color: #efefef;
 }
 
 .welcome-card,
 .cart-section,
 .products-section {
-    background: white;
+    background: #000000;
     border-radius: 18px;
     padding: 18px;
     margin-bottom: 18px;
@@ -48,17 +54,17 @@ body {
 }
 
 .product-card {
-    border: 1px solid #e5e7eb;
+    border: 1px solid #340078;
     border-radius: 16px;
     overflow: hidden;
-    background: #fff;
+    background: #111111;
     display: flex;
     flex-direction: column;
 }
 
 .product-card img {
     width: 100%;
-    height: 210px;
+    height: auto;
     object-fit: cover;
 }
 
@@ -69,7 +75,7 @@ body {
 
 .description {
     margin: 0 14px 10px;
-    color: #6b7280;
+    color: #9757d7;
     font-size: 14px;
     min-height: 38px;
 }
@@ -85,7 +91,7 @@ body {
     padding: 12px;
     border: none;
     border-radius: 12px;
-    background: #111827;
+    background: #132d5f;
     color: white;
     font-size: 15px;
     cursor: pointer;
@@ -110,17 +116,16 @@ body {
     border-radius: 12px;
     margin-bottom: 10px;
 }
-
 .cart-item-name {
     font-weight: 600;
 }
 
 .cart-item-price {
-    color: #374151;
+    color: #23cc6f;
 }
 
 .empty-cart {
-    color: #6b7280;
+    color: #757e8e;
 }
 
 .cart-footer {
@@ -142,8 +147,8 @@ body {
     padding: 14px 20px;
     border: none;
     border-radius: 12px;
-    background: #2563eb;
-    color: white;
+    background: #340078;
+    color: #ffffff;
     font-size: 16px;
     cursor: pointer;
     transition: 0.2s;
@@ -157,7 +162,7 @@ body {
     padding: 8px 12px;
     border: none;
     border-radius: 8px;
-    background: #ef4444;
+    background: #943434;
     color: white;
     font-size: 14px;
     cursor: pointer;
@@ -165,7 +170,7 @@ body {
 }
 
 .remove-btn:hover {
-    background: #dc2626;
+    background: #481818;
 }
 
 .modal {
@@ -187,7 +192,7 @@ body {
 }
 
 .modal-content {
-    background: white;
+    background: #25033c;
     padding: 20px;
     border-radius: 15px;
     width: 100%;
@@ -217,8 +222,8 @@ body {
 }
 
 .confirm-btn {
-    background: #2563eb;
-    color: white;
+    background: #831cbd;
+    color: #ffffff;
 }
 
 .confirm-btn:hover {
@@ -226,8 +231,8 @@ body {
 }
 
 .close-btn {
-    background: #e5e7eb;
-    color: #111827;
+    background: #930509;
+    color: #ffffff;
 }
 
 .close-btn:hover {
@@ -254,8 +259,8 @@ body {
 }
 
 .confirm-summary {
-    background: #f9fafb;
-    border: 1px solid #e5e7eb;
+    background: #18191a;
+    border: 1px solid #000000;
     border-radius: 12px;
     padding: 12px;
     font-size: 14px;
@@ -269,7 +274,7 @@ body {
 .confirm-summary .summary-items {
     margin-top: 10px;
     padding-top: 10px;
-    border-top: 1px solid #e5e7eb;
+    border-top: 1px solid #42156e;
 }
 
 .confirm-summary .summary-total {
